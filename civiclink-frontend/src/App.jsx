@@ -1,7 +1,7 @@
-import ComplaintForm from './pages/ComplaintForm';
+import UserDetailForm from './pages/UserDetailForm';
 
 function App() {
-  return <ComplaintForm />;
+  return <UserDetailForm/>;
 }
 
 export default App;
