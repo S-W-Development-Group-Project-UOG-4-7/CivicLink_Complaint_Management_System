@@ -51,3 +51,27 @@ export default function ComplaintForm() {
     </Container>
   );
 }
+<Form.Group className="mb-3" controlId="department">
+  <Form.Label>Responsible Department</Form.Label>
+  <Form.Select value={department} onChange={(e) => setDepartment(e.target.value)}>
+    <option value="">Select a department</option>
+    <option>National Water Supply & Drainage Board (NWSDB)</option>
+    <option>Ceylon Electricity Board (CEB)</option>
+    <option>Sri Lanka Railways</option>
+    <option>Maharagama Municipal Council</option>
+    <option>Central Transport Board (CTB)</option>
+  </Form.Select>
+</Form.Group>
+
+<Form.Group className="mb-3" controlId="category">
+  <Form.Label>Complaint Category</Form.Label>
+  <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
+    <option value="">Select a category</option>
+    <option>Service interruption</option>
+    <option>Billing issue</option>
+    <option>Infrastructure damage</option>
+    <option>Safety concern</option>
+    <option>Delay or negligence</option>
+    <option>Other</option>
+  </Form.Select>
+</Form.Group>
