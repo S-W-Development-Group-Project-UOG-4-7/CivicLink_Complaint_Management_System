@@ -145,3 +145,6 @@ export default function ComplaintForm() {
 <Form.Group controlId="declaration">
   <Form.Check type="checkbox" label="I confirm that information is accurate." checked={declaration} onChange={(e)=>setDeclaration(e.target.checked)} />
 </Form.Group>
+<Button type="submit" disabled={!department || !category}>
+  {false ? "Submitting..." : "Submit Complaint"}
+</Button>
