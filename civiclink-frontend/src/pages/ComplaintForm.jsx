@@ -17,8 +17,10 @@ import {
   FiMapPin,
   FiCheckCircle,
 } from 'react-icons/fi';
+import MapPicker from './MapPicker';
+import ComplaintSuccess from './ComplaintSuccess';
 
-export default function ComplaintForm({ userData = {} }) {
+export default function ComplaintForm({ userData = {}, onSuccess, googleMapsApiKey, successRedirectPath }) {
   // Form state
   const [department, setDepartment] = useState('');
   const [category, setCategory] = useState('');
@@ -95,10 +97,25 @@ export default function ComplaintForm({ userData = {} }) {
   };
 
   const handlePickLocation = () => {
-    // Simulate picking a location on a map (no real map integration)
-    // Example: Colombo coordinates
-    setLat('6.9271');
-    setLng('79.8612');
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          setLat(String(latitude));
+          setLng(String(longitude));
+        },
+        () => {
+          // Fallback center: Colombo
+          setLat('6.9271');
+          setLng('79.8612');
+        },
+        { enableHighAccuracy: true, timeout: 8000 }
+      );
+    } else {
+      // Fallback center: Colombo
+      setLat('6.9271');
+      setLng('79.8612');
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -116,6 +133,20 @@ export default function ComplaintForm({ userData = {} }) {
     const ref = `CL-${Math.floor(100000 + Math.random() * 900000)}`;
     setSuccessRef(ref);
     setSubmitting(false);
+
+    if (onSuccess) {
+      try {
+        onSuccess(ref);
+      } catch {}
+    }
+
+    if (successRedirectPath && typeof window !== 'undefined') {
+      try {
+        const url = `${successRedirectPath}${successRedirectPath.includes('?') ? '&' : '?'}ref=${encodeURIComponent(ref)}`;
+        window.location.assign(url);
+        return; // stop further reset if navigating away
+      } catch {}
+    }
 
     // Optional reset of fields after success (keep location and file cleared)
     setDepartment('');
@@ -137,6 +168,24 @@ export default function ComplaintForm({ userData = {} }) {
   const goBack = () => {
     if (window && window.history) window.history.back();
   };
+
+  if (successRef && !successRedirectPath) {
+    return (
+      <ComplaintSuccess
+        referenceId={successRef}
+        onSubmitAnother={() => {
+          if (typeof window !== 'undefined') {
+            window.location.reload();
+          }
+        }}
+        onBackHome={() => {
+          if (typeof window !== 'undefined' && window.history) {
+            window.history.back();
+          }
+        }}
+      />
+    );
+  }
 
   return (
     <Container className="py-4">
@@ -395,23 +444,20 @@ export default function ComplaintForm({ userData = {} }) {
                       </Button>
                     </div>
 
-                    <div
-                      className="mt-3 rounded"
-                      style={{
-                        height: 160,
-                        background: 'linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 37%, #f1f5f9 63%)',
-                        backgroundSize: '400px 100%',
-                        animation: 'shimmer 1.6s infinite linear',
-                        border: '1px dashed #cbd5e1',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#475569',
-                      }}
-                      role="img"
-                      aria-label="Map placeholder"
-                    >
-                      Map placeholder (no live map)
+                    <div className="mt-3">
+                      <MapPicker
+                        apiKey={googleMapsApiKey}
+                        value={{ lat, lng }}
+                        onChange={(pos) => {
+                          setLat(String(pos.lat));
+                          setLng(String(pos.lng));
+                        }}
+                        height="260px"
+                        center={{
+                          lat: lat ? parseFloat(lat) : 7.8731,
+                          lng: lng ? parseFloat(lng) : 80.7718,
+                        }}
+                      />
                     </div>
                   </Card.Body>
                 </Card>
