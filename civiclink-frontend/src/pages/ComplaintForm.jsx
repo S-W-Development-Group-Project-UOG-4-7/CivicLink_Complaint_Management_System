@@ -150,3 +150,9 @@ export default function ComplaintForm() {
 </Button>
 
 {true && <div>Your complaint submitted successfully. Reference ID: CL-123456</div>}
+
+<Button variant="link" onClick={()=>window.history.back()} aria-label="Go back">
+  <FiArrowLeft /> Back
+</Button>
+
+
