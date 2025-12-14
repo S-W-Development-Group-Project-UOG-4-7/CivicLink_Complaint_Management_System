@@ -124,3 +124,14 @@ export default function ComplaintForm() {
   <Form.Label>Photo (optional)</Form.Label>
   <Form.Control type="file" accept=".jpg,.jpeg,.png" onChange={(e) => setPhoto(e.target.files[0])} />
 </Form.Group>
+<Form.Group controlId="incidentDate">
+  <Form.Label>Incident Date</Form.Label>
+  <Form.Control type="date" value={incidentDate} onChange={(e) => setIncidentDate(e.target.value)} />
+</Form.Group>
+
+<Form.Group controlId="urgency">
+  <Form.Label>Urgency Level</Form.Label>
+  <Form.Check type="radio" label="Low" value="Low" checked={urgency === 'Low'} onChange={(e) => setUrgency(e.target.value)} />
+  <Form.Check type="radio" label="Medium" value="Medium" checked={urgency === 'Medium'} onChange={(e) => setUrgency(e.target.value)} />
+  <Form.Check type="radio" label="High" value="High" checked={urgency === 'High'} onChange={(e) => setUrgency(e.target.value)} />
+</Form.Group>
