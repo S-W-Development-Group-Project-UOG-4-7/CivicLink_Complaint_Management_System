@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-export default function OtpVerification({ length = 6, onVerify }) {
+export default function OtpVerification({ length = 6, onVerify, onSubmit, mobile }) {
   const [values, setValues] = useState(Array.from({ length }, () => ''));
   const inputsRef = useRef([]);
 
@@ -72,7 +72,8 @@ export default function OtpVerification({ length = 6, onVerify }) {
   const isComplete = code.length === length && values.every((v) => v !== '');
 
   const handleVerify = () => {
-    if (onVerify) onVerify(code);
+    if (onVerify) return onVerify(code);
+    if (onSubmit) return onSubmit(code);
   };
 
   const goBack = () => {
