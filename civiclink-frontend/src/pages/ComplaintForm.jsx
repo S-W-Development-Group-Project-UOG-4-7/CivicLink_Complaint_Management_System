@@ -135,3 +135,13 @@ export default function ComplaintForm() {
   <Form.Check type="radio" label="Medium" value="Medium" checked={urgency === 'Medium'} onChange={(e) => setUrgency(e.target.value)} />
   <Form.Check type="radio" label="High" value="High" checked={urgency === 'High'} onChange={(e) => setUrgency(e.target.value)} />
 </Form.Group>
+
+<Form.Group controlId="preferredContact">
+  <Form.Label>Preferred Contact</Form.Label>
+  <Form.Check type="radio" label="SMS" value="SMS" checked={preferredContact==='SMS'} onChange={(e)=>setPreferredContact(e.target.value)} />
+  <Form.Check type="radio" label="Phone" value="Phone" checked={preferredContact==='Phone'} onChange={(e)=>setPreferredContact(e.target.value)} />
+</Form.Group>
+
+<Form.Group controlId="declaration">
+  <Form.Check type="checkbox" label="I confirm that information is accurate." checked={declaration} onChange={(e)=>setDeclaration(e.target.checked)} />
+</Form.Group>
