@@ -95,3 +95,22 @@ export default function ComplaintForm() {
     onChange={(e) => setDescription(e.target.value)}
   />
 </Form.Group>
+<Form.Group className="mb-3" controlId="address">
+  <Form.Label>Address</Form.Label>
+  <Form.Control type="text" placeholder="Street address" value={address} onChange={(e) => setAddress(e.target.value)} />
+</Form.Group>
+
+<Form.Group className="mb-3" controlId="city">
+  <Form.Label>City/Area</Form.Label>
+  <Form.Control type="text" placeholder="City" value={city} onChange={(e) => setCity(e.target.value)} />
+</Form.Group>
+
+<Form.Group className="mb-3" controlId="district">
+  <Form.Label>District</Form.Label>
+  <Form.Select value={district} onChange={(e) => setDistrict(e.target.value)}>
+    <option value="">Select a district</option>
+    <option>Colombo</option>
+    <option>Gampaha</option>
+    <option>Kandy</option>
+  </Form.Select>
+</Form.Group>
