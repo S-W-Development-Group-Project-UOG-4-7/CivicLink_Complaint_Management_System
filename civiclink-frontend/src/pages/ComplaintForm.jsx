@@ -120,3 +120,7 @@ export default function ComplaintForm() {
 <div>
   {lat && lng ? `Latitude: ${lat}, Longitude: ${lng}` : "No location selected"}
 </div>
+<Form.Group controlId="photo">
+  <Form.Label>Photo (optional)</Form.Label>
+  <Form.Control type="file" accept=".jpg,.jpeg,.png" onChange={(e) => setPhoto(e.target.files[0])} />
+</Form.Group>
