@@ -114,3 +114,9 @@ export default function ComplaintForm() {
     <option>Kandy</option>
   </Form.Select>
 </Form.Group>
+<Button variant="outline-primary" onClick={() => { setLat('6.9271'); setLng('79.8612'); }}>
+  Pick Location on Map
+</Button>
+<div>
+  {lat && lng ? `Latitude: ${lat}, Longitude: ${lng}` : "No location selected"}
+</div>
