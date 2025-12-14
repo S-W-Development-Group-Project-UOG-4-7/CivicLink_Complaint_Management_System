@@ -75,3 +75,23 @@ export default function ComplaintForm() {
     <option>Other</option>
   </Form.Select>
 </Form.Group>
+<Form.Group className="mb-3" controlId="title">
+  <Form.Label>Complaint Title</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="Enter title"
+    value={title}
+    onChange={(e) => setTitle(e.target.value.slice(0, 100))}
+  />
+</Form.Group>
+
+<Form.Group className="mb-3" controlId="description">
+  <Form.Label>Complaint Description</Form.Label>
+  <Form.Control
+    as="textarea"
+    rows={5}
+    placeholder="Describe your complaint"
+    value={description}
+    onChange={(e) => setDescription(e.target.value)}
+  />
+</Form.Group>
