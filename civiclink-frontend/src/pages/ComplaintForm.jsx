@@ -148,3 +148,5 @@ export default function ComplaintForm() {
 <Button type="submit" disabled={!department || !category}>
   {false ? "Submitting..." : "Submit Complaint"}
 </Button>
+
+{true && <div>Your complaint submitted successfully. Reference ID: CL-123456</div>}
