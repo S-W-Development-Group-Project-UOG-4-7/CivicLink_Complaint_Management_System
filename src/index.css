@@ -1,0 +1,145 @@
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+.district-card {
+  height: 280px;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.district-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.district-card:hover {
+  transform: scale(1.05);
+}
+
+.district-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+  text-align: left;
+  border-radius: 0 0 12px 12px;
+}
+
+.district-overlay h5 {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Force carousel arrows to show */
+.district-carousel .carousel-control-prev,
+.district-carousel .carousel-control-next {
+  width: 5%;
+  opacity: 1;
+}
+
+.district-carousel .carousel-control-prev-icon,
+.district-carousel .carousel-control-next-icon {
+  background-size: 100%, 100%;
+  filter: invert(1); /* white arrows */
+}
+
+/* Search icon inside input */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 1.2rem;
+  z-index: 5;
+}
+
+/* Civic Footer */
+.civic-footer {
+  background-color: #0f2a44; /* government dark blue */
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-title {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #d1dbe5;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #d1dbe5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  background-color: #0b2236;
+  font-size: 14px;
+}
+/* Reusable civic dark section */
+.civic-section {
+  background-color: #0f2a44;  /* SAME AS FOOTER */
+}
+.civic-section {
+  background: linear-gradient(135deg, #0f2a44, #123c63);
+}
+/* Footer-color button */
+.btn-footer {
+  background-color: #0f2a44; /* same as your footer */
+  color: white;
+  border: 1px solid #151223ff;
+  transition: all 0.3s;
+}
+
+.btn-footer:hover {
+  background-color: #151223ff; /* darker on hover */
+  color: white;
+  border-color: #0f2a44;
+}
+
+/* Card hover effect */
+.category-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 1;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
