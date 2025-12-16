@@ -4,7 +4,7 @@ import React from "react";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
+import OfficerLogin from "./pages/OfficerLogin";
 
 
 
@@ -13,6 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+          <Route path="/officer-login" element={<OfficerLogin />} />
         {/* Add more routes here */}
       </Routes>
     </BrowserRouter>
