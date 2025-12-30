@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-75zi!q^#5@xqe6^nstufghgxv7hn@5e-(-cz8z#vuu7%x9pnij
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -42,8 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',      # Django REST framework for APIs
     'corsheaders',         # Enable frontend to access backend
 
-    # Your app
-    'complaints',          # Complaints module
+    'users.apps.UsersConfig',
+    'complaints.apps.ComplaintsConfig',         # Complaints module
 ]
 
 MIDDLEWARE = [
@@ -89,11 +90,14 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'civiclink_db',    # database you created
-        'USER': 'root',            # MySQL username
-        'PASSWORD': '2004',        # MySQL password (in quotes!)
-        'HOST': '127.0.0.1',       # localhost
-        'PORT': '3307',            # the port MySQL/MariaDB is running on
+        'NAME': 'civiclink_database',  # your database name
+        'USER': 'root',                # your MySQL username
+        'PASSWORD': '',                # your MySQL root password (leave blank if none)
+        'HOST': '127.0.0.1',
+        'PORT': '3307',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 

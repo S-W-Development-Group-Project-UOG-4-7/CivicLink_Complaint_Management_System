@@ -322,35 +322,6 @@ const UserDetailsForm = ({ onSubmit }) => {
                         </Form.Group>
                       </Col>
 
-                      {/* Address */}
-                      <Col xs={12}>
-                        <Form.Group controlId="address">
-                          <Form.Label>Address</Form.Label>
-                          <InputGroup>
-                            <OverlayTrigger placement="top" overlay={renderIconTip('Street and house number')}>
-                              <InputGroup.Text aria-hidden="true">
-                                <FaHome />
-                              </InputGroup.Text>
-                            </OverlayTrigger>
-                            <Form.Control
-                              type="text"
-                              name="address"
-                              placeholder="No. 25, Galle Road"
-                              value={values.address}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              isInvalid={touched.address && !!errors.address}
-                              aria-invalid={touched.address && !!errors.address}
-                              aria-describedby="addressFeedback"
-                              required
-                            />
-                          </InputGroup>
-                          <Form.Control.Feedback type="invalid" id="addressFeedback">
-                            {errors.address}
-                          </Form.Control.Feedback>
-                        </Form.Group>
-                      </Col>
-
                       {/* City */}
                       <Col md={4}>
                         <Form.Group controlId="city">
